@@ -1,5 +1,5 @@
 const assert = require('assert');
-const doneOrNot = require('../did-i-finish-my-sudoku.js');
+const doneOrNot = require('../src/did-i-finish-my-sudoku.js');
 
 describe('Sudoku test', function () {
     assert.equal(doneOrNot(

@@ -4,11 +4,23 @@
  * the same nesting structure as the first array.
  */
 Array.prototype.sameStructureAs = function (other) {
-    console.log('Array.prototype');
+    let result = Array.isArray(other);
+
+    if(result) result = this.length === other.length;
     for (let i = 0; i < this.length; i++) {
-        const element = this[i];
-        const otherElement = other[i];
-
-
-    }    
+        if (result) {
+            const element = this[i];
+            const otherElement = other[i];
+            if (Array.isArray(element)) {
+                if (Array.isArray(otherElement)) {
+                    if (!element.sameStructureAs(otherElement)) {
+                        result = false;
+                    };
+                } else {
+                    result = false;;
+                }
+            }
+        }
+    }
+    return result;
 };

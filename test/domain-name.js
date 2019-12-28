@@ -1,9 +1,17 @@
-const assert = require('assert');
+const expect = require('chai').expect;
 const domainName = require('../src/domain-name.js');
 
 describe("domain name", function () {
-    assert.equal(domainName("http://google.com"), "google");
-    assert.equal(domainName("http://google.co.jp"), "google");
-    assert.equal(domainName("www.xakep.ru"), "xakep");
-    assert.equal(domainName("https://youtube.com"), "youtube");
+    it("google", function () {
+        expect(domainName("http://google.com")).to.equal("google");
+    });
+    it("google 2", function () {
+        expect(domainName("http://google.co.jp")).to.equal("google");
+    });
+    it("xakep", function () {
+        expect(domainName("www.xakep.ru")).to.equal("xakep");
+    });
+    it("youtube", function () {
+        expect(domainName("https://youtube.com")).to.equal("youtube");
+    });
 });

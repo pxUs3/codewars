@@ -4,5 +4,11 @@
  * the same nesting structure as the first array.
  */
 Array.prototype.sameStructureAs = function (other) {
-  
+    console.log('Array.prototype');
+    for (let i = 0; i < this.length; i++) {
+        const element = this[i];
+        const otherElement = other[i];
+
+
+    }    
 };

@@ -1,10 +1,12 @@
 /**
  * <4 kyu> Large Factorials
+ * https://www.codewars.com/kata/557f6437bf8dcdd135000010
  * In mathematics, the factorial of integer n is written as n!. It is equal to the product of n and every integer preceding it. For example: 5! = 1 x 2 x 3 x 4 x 5 = 120
  *
  * Your mission is simple: write a function that takes an integer n and returns the value of n!.
  *
- * You are guaranteed an integer argument. For any values outside the non-negative range, return null, nil or None (return an empty string "" in C and C++). For non-negative numbers a full length number is expected for example, return 25! = "15511210043330985984000000" as a string.
+ * You are guaranteed an integer argument. For any values outside the non-negative range, return null, nil or None (return an empty string "" in C and C++). 
+ * For non-negative numbers a full length number is expected for example, return 25! = "    " as a string.
  * 
  * For more on factorials, see http://en.wikipedia.org/wiki/Factorial
  * 
@@ -16,7 +18,29 @@
  */
 
 function factorial(n) {
-    // Add some code
+    if (n === 0)
+        return '1';
+
+    if (!n)
+        return '';
+
+    let i, nextNumber, carret;
+
+    let result = n.toString().split('').reverse().map(Number);
+
+    while (--n) {
+        i = 0;
+        carret = 0;
+        while ((nextNumber = result[i++]) !== undefined || carret) {
+            console.log(nextNumber);
+
+            carret = (nextNumber || 0) * n + carret;
+            result[i - 1] = carret % 10;
+            carret = parseInt(carret / 10);
+        }
+    }
+
+    return result.reverse().join('');
 }
 
 module.exports = factorial;

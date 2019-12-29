@@ -7,7 +7,21 @@
  */
 
 function nextBigger(n) {
-    //your code here
+    const numbers = n.toString().split('').reverse();
+    let changed = false;
+    for (const [i, n] of numbers.slice(1).entries()) {
+        if (numbers[i] > n) {
+            changed = true;
+            numbers[i + 1] = numbers[i];
+            numbers[i] = n;
+            break;
+        }
+    }
+    if (changed) {
+        return parseInt(numbers.reverse().join(''));
+    } else {
+        return -1;
+    }
 }
 
 module.exports = nextBigger;
